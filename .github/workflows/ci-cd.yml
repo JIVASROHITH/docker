@@ -5,6 +5,8 @@ on:
     branches:
       - main
   pull_request:
+    branches:
+      - '**'  # Adjust if needed
   schedule:
     - cron: '56 5 * * 1'
   workflow_dispatch:
@@ -17,11 +19,11 @@ jobs:
       fail-fast: false
       matrix:
         language:
-          - javascript
+          - javascript  # Ensure this matches the language you are analyzing
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3  # Ensure this is the correct and latest version
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
