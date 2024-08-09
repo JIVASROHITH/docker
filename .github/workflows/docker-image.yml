@@ -64,7 +64,7 @@ jobs:
         with:
           registry: docker.io
           username: logan2507
-          password: 10qpalzm@
+          password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Extract Docker metadata
         id: meta
@@ -102,8 +102,8 @@ jobs:
 
       - name: Build and deploy website
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPOSITORY_URL: ${{ github.repository_url }}
+          GITHUB_TOKEN: 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
+          REPOSITORY_URL: https://github.com/JIVASROHITH/docker
         run: |
           npm run build
           git config --global user.name "github-actions"
