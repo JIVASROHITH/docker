@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Build the Hugo site
-RUN hugo
+
 
 # Step 2: Set up Nginx to serve the site
 FROM nginx:alpine
