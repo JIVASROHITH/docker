@@ -24,7 +24,7 @@ jobs:
       run: docker push my-image-name:$(date +%s)
     - name: Deploy to GitHub Pages
       env:
-        GITHUB_TOKEN: 
+        GITHUB_TOKEN: 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
         REPO_NAME: logan.github.io
       run: |
         git config --global user.name "JIVASROHITH"
