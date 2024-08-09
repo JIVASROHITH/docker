@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
     branches:
-      - '**'  # Adjust if needed
+      - '**'
   schedule:
     - cron: '56 5 * * 1'
   workflow_dispatch:
@@ -19,13 +19,13 @@ jobs:
       fail-fast: false
       matrix:
         language:
-          - javascript  # Ensure this matches the language you are analyzing
+          - javascript
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Ensure this is the correct and latest version
+        uses: actions/checkout@v3
 
-      - name: Initialize CodeQL
+      - name: Set up CodeQL
         uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
@@ -33,5 +33,14 @@ jobs:
       - name: Autobuild
         uses: github/codeql-action/autobuild@v2
 
-      - name: Perform CodeQL Analysis
+      - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v2
+        with:
+          # Optional: Add any additional parameters here if needed
+          
+      - name: Display CodeQL Configuration
+        run: |
+          cat /home/runner/.config/codeql/config || echo "No config file found"
+
+      - name: Check available disk space
+        run: df -h
