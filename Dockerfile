@@ -5,7 +5,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN hugo
 
 FROM nginx:alpine
 
