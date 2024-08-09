@@ -1,15 +1,24 @@
 # Step 1: Build the Hugo site
-FROM klakegg/hugo:ext-alpine AS builder
+# Use an official nginx image as a base
 
-WORKDIR /app
+FROM nginx:alpine
+
+
+# Create a new directory for our static files
+
+WORKDIR /usr/share/nginx/html
+
+
+# Copy our static files into the container
 
 COPY . .
 
 
-FROM nginx:alpine
-
-COPY --from=builder /app/public /usr/share/nginx/html
+# Expose port 80 for nginx
 
 EXPOSE 80
+
+
+# Run nginx when the container starts
 
 CMD ["nginx", "-g", "daemon off;"]
