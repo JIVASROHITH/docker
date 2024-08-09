@@ -35,8 +35,7 @@ jobs:
 
       - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v2
-        with:
-          # Optional: Add any additional parameters here if needed
+
           
       - name: Display CodeQL Configuration
         run: |
