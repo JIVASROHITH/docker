@@ -64,7 +64,7 @@ jobs:
         with:
           registry: docker.io
           username: logan2507
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: 10qpalzm@
 
       - name: Extract Docker metadata
         id: meta
@@ -97,6 +97,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # specify the Node.js version here
+
       - name: Install dependencies
         run: npm install
 
@@ -106,7 +111,7 @@ jobs:
           REPOSITORY_URL: https://github.com/JIVASROHITH/docker
         run: |
           npm run build
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.name "JIVASROHITH"
+          git config --global user.email "jivasrohith@karunya.edu.in"
           git remote add origin $REPOSITORY_URL
           git push --force origin main:gh-pages
